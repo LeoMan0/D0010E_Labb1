@@ -70,7 +70,7 @@ public class Main {
         return numberOut;
     }
 
-    //Task 2 methods:
+    //Task 2 methods:as
     //Surely I did all this by hand.
     public static int f2(int a0) {
         // f2(a0) is equivalent to f1(f1(a0))
