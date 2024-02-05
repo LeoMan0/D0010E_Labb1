@@ -1,8 +1,8 @@
 public class Raise {
     // Here is the answer to task 10 in text.
-    // The expontent why I did like one test and also thats just how math works I would kill myself (in game) if I had to calculate 2^100000 by hand
+    // The expontent why I did like one test and also thats just how math works I would be angry if I had to calculate 2^100000 by hand
     // but if I had to do 100000^2 I would be fine.
-    //graf bild
+
     // recRaiseOne n=k linear
     // recRaiseOne n = floor(log_2(k))+2
 
