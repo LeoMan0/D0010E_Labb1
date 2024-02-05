@@ -6,32 +6,47 @@ public class Main {
     public static void main(String[] args) {
 
         //Getting input from the terminal
+        Scanner chooseTaskToRun = new Scanner(System.in);
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Enter a int");
+        int userInt;
 
         //Making
         while (true) {
+            System.out.println("Enter what task to run");
+            int taskToRun = chooseTaskToRun.nextInt();
 
-            int userInt=userInput.nextInt();
-
+            //Making so that the program only asks for an int if it needs one to run the task
+            if (taskToRun==4 || taskToRun==6){
+                userInt = 1;
+            }
+            else {
+                System.out.println("enter the int");
+                userInt = userInput.nextInt();
+            }
 
             //Doing the stuff if the input is accepted
             if (userInt > 0){
                 // Here is we print the stuff for task 1 and 2
-                System.out.println("Number in is:  " + userInt);
-                System.out.println("Number out  for f1 is: " + f1(userInt));
-                System.out.println("Number our for f2 is: " + f2(userInt));
-                System.out.println("Number out for f4 is: " + f4(userInt));
-                System.out.println("Number out for f8 is: " + f8(userInt));
-                System.out.println("Number out for f16 is: " + f16(userInt));
-                System.out.println("Number out for f32 is: " + f32(userInt));
+                switch (taskToRun){
+                    case 1:
+                        runTask1(userInt);
+                        break;
+                    case 2:
+                        runTask2(userInt);
+                        break;
+                    case 3:
+                        runTask3(userInt);
+                        break;
+                    case 4:
+                        runTask4or6(4);
+                        break;
+                    case 6:
+                        runTask4or6(6);
+                        break;
+                    default:
+                        System.out.println("Not a task can be run here");
 
-                //Printing task 3 unclear what more to do
-                System.out.println("Number out for iterateF(a4,userInt) is:" + iterateF(1, userInt));
-
-                //Task 4 sout.
-                System.out.println(intsToString(userInt, iterLifeLength(userInt)));
-
+                }
 
             }
             else if (userInt == 0) {
@@ -45,13 +60,43 @@ public class Main {
 
         }
 
-        //Task 4 part 3 AKA numbers from 1 to 15 prints
-        for (int i=1; i <= 15; i++ ){
-            System.out.println(intsToString(i,iterLifeLength(i)));
-            System.out.println(intsToString(i,recLifeLength(i)));
-        }
 
     }
+
+
+
+    public static void runTask1(int userInt) {
+        System.out.println("Number out  for f1 is: " + f1(userInt));
+    }
+
+    public static void runTask2(int userInt){
+        System.out.println("Number out  for f1 is: " + f1(userInt));
+        System.out.println("Number our for f2 is: " + f2(userInt));
+        System.out.println("Number out for f4 is: " + f4(userInt));
+        System.out.println("Number out for f8 is: " + f8(userInt));
+        System.out.println("Number out for f16 is: " + f16(userInt));
+        System.out.println("Number out for f32 is: " + f32(userInt));
+    }
+
+    public static void runTask3(int userInt) {
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Enter amount of steps");
+        int userSteps = userInput.nextInt();
+        System.out.println("Number out is:" + iterateF(userSteps, userInt));
+    }
+
+    public static void runTask4or6(int taskToRun){
+
+        for (int i=1; i <= 15; i++ ){
+            if (taskToRun==4) {
+                System.out.println(intsToString(i, iterLifeLength(i)));
+            }
+            else {
+                System.out.println(intsToString(i, recLifeLength(i)));
+            }
+        }
+    }
+
 
     //Task 1 method
     public static int f1(int numberIn){
@@ -70,8 +115,10 @@ public class Main {
         return numberOut;
     }
 
-    //Task 2 methods:as
-    //Surely I did all this by hand.
+
+
+    //Task 2 methods:
+
     public static int f2(int a0) {
         // f2(a0) is equivalent to f1(f1(a0))
         return f1(f1(a0));
@@ -97,6 +144,7 @@ public class Main {
         return f16(f16(a0));
     }
 
+
     // Task 3 method
     public static int iterateF(int a0, int n){
         int iterateFOut = n;
@@ -108,6 +156,8 @@ public class Main {
 
         return iterateFOut;
     }
+
+
 
     //Task 4 method
     public static int iterLifeLength(int a0){
